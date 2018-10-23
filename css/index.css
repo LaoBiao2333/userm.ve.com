@@ -1,0 +1,222 @@
+/* 银行资料 */
+.box.brank .top-box {
+    background: #345483;
+}
+
+.box.brank .top-box i span {
+    background: url(/images/tip_bg2.png) no-repeat center;
+    background-size: contain;
+    line-height: .34rem;
+    height: 1.12rem;
+    padding-left: .2rem;
+}
+
+/* 在线存款 */
+.box.deposit .content-box.pause {
+    padding: 1rem .3rem 2.45rem;
+    box-sizing: border-box;
+}
+
+.box.deposit .content-box.pause i {
+    display: block;
+    width: 1.15rem;
+    height: 1.15rem;
+    background: url(/images/deposit_icon.png) no-repeat center;
+    background-size: contain;
+    margin: 0 auto .8rem;
+}
+
+.box.deposit .content-box.pause span {
+    font-size: .32rem;
+    color: #4a4a4a;
+    line-height: .46rem;
+    display: block;
+    text-align: center;
+}
+
+.box.deposit .item.input-box span::after {
+    position: absolute;
+    left: .3rem;
+    top: .66rem;
+    width: .28rem;
+    height: .86rem;
+    content: '$';
+    font-size: .28rem;
+    line-height: .86rem;
+    color: #4a4a4a;
+}
+.box.deposit .item.rmb span::after {
+    content: '￥';
+    color: #df4425;
+}
+
+.box.deposit .item.usd input {
+    padding-left: .82rem;
+}
+
+.box.deposit .item.rmb .input-div {
+    padding-left: .82rem;
+    color: #df4425;
+}
+
+.box.deposit .pop-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 901;
+    display: none;
+}
+
+.box.deposit .pop-box {
+    width: 100%;
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    z-index: 903;
+    max-width: 6.9rem;
+    border: 0.01rem solid #345483;
+    padding: .24rem .6rem 1rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: none;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.box.deposit .pop-box i {
+    width: .3rem;
+    height: .3rem;
+    display: block;
+    background: url(/images/close_icon.png) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    right: .3rem;
+    height: .3rem;
+}
+
+.box.deposit .pop-box h5 {
+    font-size: .36rem;
+    color: #333;
+    display: block;
+    text-align: center;
+}
+
+.box.deposit .pop-box .pop-content {
+    margin-top: .36rem;
+    height: 5rem;
+    overflow: scroll;
+}
+.box.deposit .pop-box .pop-content p {
+    font-size: .28rem;
+    color: #4a4a4a;
+    line-height: .36rem;
+}
+
+/* 极速取款 */
+.box.draw .content-box .fl {
+    float: initial;
+    margin: 0 auto;
+}
+
+.box.draw .content-box .fl .btn-div {
+    text-align: center;
+}
+.box.draw .content-box .fl .btn-a {
+    width: 190px;
+    display: inline-block;
+}
+.box.draw .content-box .fl .btn-a.reset-a {
+    background-color: #a7a7a7;
+    margin-right: 20px;
+}
+.box.draw .content-box .fl .btn-a.reset-a:hover {
+    background-color: #bfbfbf;
+}
+
+.box.draw .content-box .item .input-div,
+.box.draw .content-box .item.rmb::after {
+    color: #ff5722;
+}
+
+
+/* 修改密码 */
+.box.reset .item.new-pwd span.span-title {
+    position: relative;
+}
+.box.reset .item.new-pwd span.span-title::after {
+    position: absolute;
+    right: .1rem;
+    top: .9rem;
+    width: .3rem;
+    height: .3rem;
+    padding-right: .3rem;
+    content: '弱';
+    font-size: .28rem;
+    color: #d13d26;
+    background-color: #fff;
+    z-index: 1;
+    display: none;
+}
+.box.reset .item.new-pwd.weak span.span-title::after {
+    display: block;
+}
+.box.reset .item.new-pwd.medium span.span-title::after {
+    color: #f9b133;
+    display: block;
+    content: '中';
+}
+.box.reset .item.new-pwd.strong span.span-title::after {
+    color: #35a947;
+    display: block;
+    content: '强';
+}
+
+.box a.next-a {
+    width: 100%;
+    height: .92rem;
+    line-height: .92rem;
+    background-color: #35a947;
+    font-size: .28rem;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    border-radius: .04rem;
+    -webkit-border-radius: .04rem;
+    -moz-border-radius: .04rem;
+    -ms-border-radius: .04rem;
+    -o-border-radius: .04rem;
+    margin-top: .65rem;
+}
+
+.box.reset .success-reset {
+    padding: 1rem 0 1.7rem;
+    display: none;
+}
+
+.box.reset .success-reset i {
+    width: 1.1rem;
+    height: 1.11rem;
+    display: block;
+    margin: 0 auto .37rem;
+    background: url(/images/pwd_icon.png) no-repeat center;
+    background-size: contain;
+}
+.box.reset .success-reset p {
+    text-align: center;
+    font-size: .32rem;
+    color: #4a4a4a;
+    margin-bottom: .54rem;
+}
+.box.reset .success-reset a {
+    text-align: center;
+    display: block;
+    font-size: .32rem;
+    color: #2d8fe9;
+    text-decoration-line: underline;
+    -moz-text-decoration-line: underline;
+}

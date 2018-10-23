@@ -1,0 +1,33 @@
+<div class="footer">
+    <ul>
+        <li class="li-1 active">
+            <a href="/">
+                <i></i>
+                个人
+            </a>
+        </li>
+        <li class="li-2">
+            <a href="/deposit">
+                <i></i>
+                入金
+            </a>
+        </li>
+        <li class="li-3">
+            <a href="/draw">
+                <i></i>
+                出金
+            </a>
+        </li>
+        <li class="li-4">
+            <a href="/allRecords">
+                <i></i>
+                记录
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    $(".footer ul li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+</script>

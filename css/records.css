@@ -1,0 +1,125 @@
+#page {
+    text-align: center
+}
+
+#page .layui-laypage a,
+#page .layui-laypage span {
+    padding: 0 12px;
+    margin: 0 5px;
+    font-size: 16px;
+    color: #666;
+}
+
+#page .layui-laypage-next em,
+#page .layui-laypage-prev em {
+    font-size: 22px;
+    font-weight: bold;
+    color: #a3a3a3;
+}
+
+/* 全部记录 */
+.box.records .content-box {
+    padding: .46rem .2rem;
+}
+.box.records .content-box .top-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: .6rem;
+}
+.box.records .content-box .top-nav .item.select-box {
+    width: 2.2rem;
+    padding-top: 0;
+}
+.box.records .content-box .top-nav .item.select-box span::after {
+    top: .66rem;
+}
+.box.records .content-box .top-nav .item.select-box select {
+    padding: 0 .1rem 0 .15rem;
+}
+
+.box.records .content-box .nav-content .list-box {
+    display: none;
+}
+.box.records .content-box .nav-content .list-box.active {
+    display: block;
+}
+
+.box.records .content-box .nav-content .list-box ul {
+    margin-bottom: .56rem;
+    border-bottom: 0.01rem solid #b8b8b8;
+}
+.box.records .content-box .nav-content .list-box ul:last-child {
+    border-bottom: none;
+}
+
+.box.records .content-box .nav-content .list-box ul li {
+    padding-bottom: .56rem;
+}
+.box.records .content-box .nav-content .list-box ul li p.time {
+    font-size: .26rem;
+    color: #666;
+}
+
+.box.records .content-box .nav-content .list-box ul li div {
+    border: 0.01rem solid #d4d4d4;
+    background: #f4f4f4;
+    margin-top: .3rem;
+    padding: .3rem .42rem .5rem .24rem;
+    box-sizing: border-box;
+}
+.box.records .content-box .nav-content .list-box ul li div p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box.records .content-box .nav-content .list-box ul li div p:first-child {
+    margin-bottom: .64rem;
+}
+.box.records .content-box .nav-content .list-box ul li div .way {
+    font-size: .3rem;
+    font-weight: bold;
+    color: #666;
+}
+.box.records .content-box .nav-content .list-box ul li div .number {
+    font-size: .28rem;
+    color: #333;
+}
+
+.box.records .content-box .nav-content .list-box ul li div .account {
+    font-size: .36rem;
+    color: #4a4a4a;
+}
+.box.records .content-box .nav-content .list-box ul li div .state {
+    font-size: .34rem;
+    color: #d43f25;
+}
+.box.records .content-box .nav-content .list-box ul li.success div .state {
+    color: #35a947;
+}
+
+.box.records .content-box .nav-content .list-box.detail ul li p {
+    margin-top: .34rem;
+    font-size: .28rem;
+    color: #333;
+}
+.box.records .content-box .nav-content .list-box.detail ul li p:first-child {
+    margin: 0;
+}
+
+.box.records .content-box .nav-content .list-box.detail ul li p span.lots {
+    font-size: .24rem;
+}
+
+.box.records .content-box .nav-content .list-box.detail ul li p span.sum {
+    font-size: .28rem;
+    color: #35a947;
+    font-weight: bold;
+}
+.box.records .content-box .nav-content .list-box.detail ul li.profit p span.sum {
+    color: #d43f25;
+}
+
+.box.records .content-box .nav-content .list-box.detail ul li p span:last-child {
+    width: 2.55rem;
+}

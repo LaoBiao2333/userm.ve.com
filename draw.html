@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script><script src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function size() {
+            var width = $(window).width();
+            if (width > 750) {
+                $('html').css('font-size', function () {
+                    return 100;
+                });
+                return;
+            } else {
+                $('html').css('font-size', function () {
+                    return 100 * width / 750;
+                });
+            }
+        }
+        size();
+        $(window).resize(function () {
+            size();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div> 
+    <div class="container">
+        <div class="box draw deposit">
+            <div class="top-box">
+                <b>极速取款</b>
+                <a href="javascript:" class="policy-a">支付政策</a>
+            </div>
+            <div class="content-box clearfix">
+                <div class="content-box">
+                    <div class="item input-box usd">
+                        <span class="span-title">取款金额（USD）</span>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="item input-box rmb">
+                        <span class="span-title">折合人民币</span>
+                        <div class="input-div"></div>
+                    </div>
+                    <a href="javascript:;" class="next-a">提交申请</a>
+                </div>
+            </div>
+            <div class="pop-box">
+                <i></i>
+                <h5>支付政策</h5>
+                <div class="pop-content">
+                    <p>
+                        1. 交易处理费为金额的5%，本公司收到入金后，会先代客垫支5%手续费，以鼓励客户交易。如客户入金后，未达到入金金额的40%用于建仓交易出金，本公司会扣除应付给网上入金金额5%的手续费。
+                        <br/><br/>2. 本公司会将客户的提现金额按照协议以固定汇率1： 6.8 进行换算后转入客户的银行账户中。
+                        <br/><br/>3. 须以本人标有银联标志的储蓄卡作为登记卡，如需更改银行资料，可与我们的客服联系。
+                        <br/><br/>4. 为有效进行出金办理，建议使用中国工商银行卡作为登记卡（工作日内2小时可以到帐）其他银行的出金时间将视乎个别银行的处理程序。
+                        <br/><br/>5. 出金金额低于50美元须自行付上银行手续费3美元。
+                        <br/><br/>6. 如有任何问题，请直接与我们的客服联系。
+                    </p>
+                </div>
+            </div>
+            <div class="pop-bg"></div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+        $("#header").load("./common/header.html")
+        $("#footer").load("./common/footer.html")
+        // 取款金额 输入
+        $(".item.usd input").blur(function () {
+            var v = $(this).val();
+            if (isNaN(v)) {
+                $(this).parent().addClass("warning");
+                $(".item.rmb div.input-div").text('');
+            } else {
+                // 负数
+                if (Math.abs(v) != v) {
+                    v = Math.abs(v).toString();
+                    $(this).val(v);
+                    $(".item.rmb div.input-div").text(Mul(v , 6.8).toFixed(2));
+                }
+                // 小数
+                if ( parseInt(v) != v) {
+                    if (v.split(".")[1].length > 2) {
+                        $(this).val(parseFloat(v).toFixed(2));
+                        var agr = $(this).val();
+                        $(".item.rmb div.input-div").text(Mul(agr , 6.8).toFixed(2));
+                    }
+                }
+                $(this).parent().removeClass("warning");
+            }
+        })
+        // 取款金额 计算
+        $(".item.usd input").on('input propertychange', function () {
+            if ($(this).val() == '') {
+                $(".item.rmb div.input-div").text('');
+            } else if (!isNaN($(this).val())) {
+                var arg = parseFloat($(this).val()).toFixed(2);
+                $(".item.rmb div.input-div").text(Mul(arg , 6.8).toFixed(2));
+            }
+        })
+        function Mul(arg1, arg2) {
+            var r1 = arg1.toString(), r2 = arg2.toString(), m, resultVal, d = arguments[2];
+            m = (r1.split(".")[1] ? r1.split(".")[1].length : 0) + (r2.split(".")[1] ? r2.split(".")[1].length : 0);
+            resultVal = Number(r1.replace(".", "")) * Number(r2.replace(".", "")) / Math.pow(10, m);
+            return typeof d !== "number" ? Number(resultVal) : Number(resultVal.toFixed(parseInt(d)));
+        }
+        $(".top-box a.policy-a").click(function () {
+            $(".pop-box").fadeIn();
+            $(".pop-bg").fadeIn();
+            $("body").css("position", "fixed");
+        })
+        $(".pop-box").click(function () {
+            $(".pop-bg").fadeOut();
+            $(this).fadeOut();
+            $("body").css("position", "static");
+        })
+        $(".pop-bg").click(function () {
+            $(".pop-box").fadeOut();
+            $(this).fadeOut();
+            $("body").css("position", "static");
+        })
+    </script>
+</body>
+
+</html>

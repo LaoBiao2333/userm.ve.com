@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script><script src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function size() {
+            var width = $(window).width();
+            if (width > 750) {
+                $('html').css('font-size', function () {
+                    return 100;
+                });
+                return;
+            } else {
+                $('html').css('font-size', function () {
+                    return 100 * width / 750;
+                });
+            }
+        }
+        size();
+        $(window).resize(function () {
+            size();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <div class="box reset">
+            <div class="top-box">
+                <b>修改密码</b>
+            </div>
+            <div class="content-box clearfix">
+                <div class="pwd-box">
+                    <div class="item input-box old-pwd">
+                        <span class="span-title">原密码：</span>
+                        <input type="password" name="" placeholder="输入原密码">
+                        <span class="error"></span>
+                    </div>
+                    <div class="item input-box new-pwd pwd-now">
+                        <span class="span-title">新密码：</span>
+                        <input type="password" name="" placeholder="输入新密码">
+                        <span class="error"></span>
+                    </div>
+                    <div class="item input-box confirm-pwd pwd-now">
+                        <span class="span-title">确认密码：</span>
+                        <input type="password" name="" placeholder="重复新密码">
+                        <span class="error"></span>
+                    </div>
+                    <a href="javascript:;" class="next-a">下一步</a>
+                </div>
+                <div class="success-reset">
+                    <i></i>
+                    <p>密码修改完成</p>
+                    <a href="javascript:;">重新登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+        $("#header").load("./common/header.html")
+        $("#footer").load("./common/footer.html")
+        $(".item.old-pwd input").on('blur input propertychange',function () {
+            if ($(this).val() == '') {
+                $(this).parent().addClass("warning").removeClass("success");
+                $(this).parent().find("span.error").text("原密码不能为空");
+                return false;
+            // } else if (!re.test($(this).val())) {
+            //     $(this).parent().addClass("warning");
+            //     $(this).parent().find("span.error").text("原密码不正确");
+            //     return false;
+            } else {
+                $(this).parent().removeClass("warning").addClass("success");
+                $(this).parent().find("span.error").text("");
+                return true;
+            }
+        });
+        // 密码判断
+        $(".new-pwd input").on('blur input propertychange',function () {
+            var re = /^[0-9]+.?[0-9]*/;
+            if($(".confirm-pwd").hasClass("warning")) {
+                if ($(this).val() == '') {
+                    $(".confirm-pwd input").val('');
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("新密码不能为空");
+                    $(".confirm-pwd").removeClass("warning success");
+                } else {
+                    checkPwd();
+                }
+            } 
+            if (!$(".confirm-pwd").hasClass("success")) {
+                if ($(this).val() == '') {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("新密码不能为空");
+                    return false;
+                } else if ($(this).val().length < 8) {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("新密码不能少于8位");
+                } else if ($(this).val().length > 15) {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("新密码不能多于15位");
+                }else {
+                    $(this).parent().removeClass("warning");
+                    $(this).parent().addClass("success");
+                    $(this).parent().find("span.error").text("");
+                    return true;
+                }
+            } else if ($(this).val() != $(".confirm-pwd input").val()) {
+                checkPwd();
+            }
+            
+        })
+        $(".new-pwd input").on("input propertychange",function(){
+            var num = $(this).val();
+            var strongRegex = new RegExp("^(?=.{8,})((?=.*[A-Z])|(?=.*[a-z]))(?=.*[0-9])(?=.*\\W).*$", "g");
+            var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+            if(false==enoughRegex.test(num)){
+                $(this).parent().removeClass("weak medium strong");
+                //密码小于8位的时候，密码强度图片都为灰色
+            }else if(strongRegex.test(num)){
+                $(this).parent().removeClass("weak medium").addClass("strong");
+                //密码为8位及以上并且字母数字特殊字符三项都包括,强度最强
+
+            }else if(mediumRegex.test(num)){
+                $(this).parent().removeClass("weak strong").addClass("medium");
+                //密码为8位及以上并且字母、数字、特殊字符三项中有两项，强度是中等
+            }else{
+                $(this).parent().removeClass("medium strong").addClass("weak");
+                //如果密码为8为及以下，就算字母、数字、特殊字符三项都包括，强度也是弱的
+            }
+        })
+
+        // 密码确认判断
+        $(".confirm-pwd input").on('blur input propertychange', function () {
+            if ($(".new-pwd").hasClass("success")) {
+                if ($(this).val() == '') {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("确认密码不能为空");
+                    return false;
+                } else if ($(this).val() != $(".new-pwd input").val()) {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("两次密码输入不相符");
+                    return false;
+                } else  {
+                    $(this).parent().removeClass("warning").addClass("success");
+                    $(this).parent().find("span.error").text("");
+                    return true;
+                }
+            } else {
+                if ($(this).val() == '') {
+                    $(this).parent().addClass("warning").removeClass("success");
+                    $(this).parent().find("span.error").text("确认密码不能为空");
+                    return false;
+                } else {
+                    $(this).parent().find("span.error").text("先输入新密码");
+                }
+            }
+        })
+        function checkPwd() {
+            var pwd1 = $(".new-pwd input").val();
+            var pwd2 = $(".confirm-pwd input").val();
+            if (pwd1 == pwd2) {
+                console.log(1)
+                $(".pwd-now").addClass("success").removeClass("warning");
+                $(".pwd-now span.error").text("");
+            } else {
+                $(".pwd-now").addClass("warning").removeClass("success");
+                $(".pwd-now span.error").text("两次密码输入不相符");
+            }
+        }
+        $(".next-a").click(checkAll);
+
+        function checkAll() {
+            $(".item input").trigger("blur");
+            if($(".item").hasClass("warning")) {
+                alert("请确认表单信息");
+                return false;
+            } else {
+                alert("success");
+                $(".success-reset").fadeIn().siblings().hide();
+            }
+        }
+    </script>
+</body>
+
+</html>

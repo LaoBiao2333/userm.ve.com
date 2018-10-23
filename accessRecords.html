@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" href="./css/layui.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/records.css">
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./layui.js"></script>
+</head>
+
+<body>
+    <div id="nav"></div>
+    <div class="container">
+        <div class="box records access">
+            <div class="top-box">
+                <b>存取记录</b>
+            </div>
+            <div class="content-box clearfix">
+                <div class="top-nav">
+                    <div class="item select-box">
+                        <p></p>
+                        <select name="call">
+                            <option value="-1">存取款记录</option>
+                            <option value="存取款记录1">存取款记录1</option>
+                            <option value="存取款记录2">存取款记录2</option>
+                            <option value="存取款记录3">存取款记录3</option>
+                        </select>
+                    </div>
+                    <div class="item select-box">
+                        <p></p>
+                        <select name="call">
+                            <option value="-1">全部</option>
+                            <option value="支付通道1">支付通道1</option>
+                            <option value="支付通道2">支付通道2</option>
+                            <option value="支付通道3">支付通道3</option>
+                        </select>
+                    </div>
+                    <div class="item select-box date-box">
+                        <p></p>
+                        <div class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" id="date" placeholder="开始 到 结束">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-content">
+                    <!-- <h2>该期间无资料显示</h2> -->
+                    <table>
+                        <tr>
+                            <td>时间</td>
+                            <td>流水号</td>
+                            <td>存款/取款</td>
+                            <td>当前状态</td>
+                        </tr>
+                        <tr>
+                            <td>2018-10-09 10:09:10</td>
+                            <td>D18092722331441</td>
+                            <td>+100.12 CNY</td>
+                            <td>已完成</td>
+                        </tr>
+                        <tr>
+                            <td>2018-10-09 10:09:10</td>
+                            <td>D18092722331441</td>
+                            <td>+100.12 CNY</td>
+                            <td>已完成</td>
+                        </tr>
+                        <tr>
+                            <td>2018-10-09 10:09:10</td>
+                            <td>D18092722331441</td>
+                            <td>+100.12 CNY</td>
+                            <td>已完成</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="page"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#nav").load("./common/nav.html")
+        layui.use(['laypage', 'laydate'], function () {
+            var laypage = layui.laypage,
+                laydate = layui.laydate;
+
+            //分页样式
+            laypage.render({
+                elem: 'page',
+                count: 100,
+                theme: '#ca3a26',
+                prev: '<i class="layui-icon"></i>',
+                next: '<i class="layui-icon"></i>',
+            });
+            
+            //日期样式
+            laydate.render({
+                elem: '#date'
+                ,type: 'datetime'
+                ,range: '-'
+                ,format: 'yyyy.M.d'
+                ,theme: '#ca3a26',
+            });
+        });
+    </script>
+</body>
+
+</html>

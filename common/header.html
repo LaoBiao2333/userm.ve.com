@@ -1,0 +1,67 @@
+<div class="header">
+    <div class="top-header">
+        <div class="logo"></div>
+        <i></i>
+    </div>
+    <div class="user-info clearfix">
+        <div class="head-img">
+            <input type="file" id="headerUpload" onchange="xmTanUploadImg(this)">
+            <img src="/images/head_img.jpg" alt="" id="headerImg" class="img-index">
+        </div>
+        <div class="txt">
+            <b>Chen zihao<span class="Unauthorized">实名认证</span></b>
+            <p>ID: 13800138000 <a href="/resetPwd">修改密码</a></p>
+            <div class="account">
+                <b>$0.00</b>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".header ul .header-li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".head-img img").click(function () {
+        $("#headerUpload").trigger("click");
+    })
+    $(function () {
+        //判断浏览器是否支持FileReader接口
+        if (typeof FileReader == 'undefined') {
+            console.log("<h1>当前浏览器不支持FileReader接口</h1>");
+            //使选择控件不可操作
+            $(".head-img #headerImg").setAttribute("disabled", "disabled");
+            $("#cardFront-img").setAttribute("disabled", "disabled");
+            $("#cardBack-img").setAttribute("disabled", "disabled");
+        }
+    })
+    function xmTanUploadImg(obj) {
+        var file = obj.files[0];
+
+        // console.log(obj);console.log(file);
+        // console.log("file.size = " + file.size);  //file.size 单位为byte
+
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            // var img = $("#cardFront-img");
+            $(obj).parent().find(".img-index").attr("src", e.target.result);
+            //或者 img.src = this.result;  //e.target == this
+        }
+        reader.readAsDataURL(file)
+    }
+</script>

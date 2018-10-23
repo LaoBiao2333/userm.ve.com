@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/records.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script><script src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function size() {
+            var width = $(window).width();
+            if (width > 750) {
+                $('html').css('font-size', function () {
+                    return 100;
+                });
+                return;
+            } else {
+                $('html').css('font-size', function () {
+                    return 100 * width / 750;
+                });
+            }
+        }
+        size();
+        $(window).resize(function () {
+            size();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <div class="box records">
+            <div class="top-box">
+                <b>全部记录</b>
+            </div>
+            <div class="content-box clearfix">
+                <div class="top-nav">
+                    <div class="item select-box">
+                        <span class="span-title"></span>
+                        <select id="order">
+                            <!-- <option value="-1">存取款记录</option> -->
+                            <option value="0">所有订单</option>
+                            <option value="1">详细订单</option>
+                        </select>
+                    </div>
+                    <div class="item select-box">
+                        <span class="span-title"></span>
+                        <select id="time">
+                            <!-- <option value="-1">全部</option> -->
+                            <option value="最近一周">最近一周</option>
+                            <option value="最近一月">最近一月</option>
+                            <option value="最近一年">最近一年</option>
+                        </select>
+                    </div>
+                    <div class="item select-box">
+                        <span class="span-title"></span>
+                        <select id="way">
+                            <option value="-1">全部</option>
+                            <option value="BUY">BUY</option>
+                            <option value="SELL">SELL</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="nav-content">
+                    <!-- <h2>该期间无资料显示</h2> -->
+                    <div class="list-box active">
+                        <ul>
+                            <li>
+                                <p class="time">2018-10-11  10:10:18</p>
+                                <div>
+                                    <p><span class="way">入金</span><span class="number">流水号：1533129320</span></p>
+                                    <p>
+                                        <b class="account">金额：5000 CNY</b>
+                                        <b class="state">处理中</b>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p><span class="way">出金</span><span class="number">流水号：1533129320</span></p>
+                                    <p>
+                                        <b class="account">金额：5000 CNY</b>
+                                        <b class="state">处理中</b>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="success">
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p><span class="way">出金</span><span class="number">流水号：1533129320</span></p>
+                                    <p>
+                                        <b class="account">金额：5000 CNY</b>
+                                        <b class="state">已完成</b>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="success">
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p><span class="way">入金</span><span class="number">流水号：1533129320</span></p>
+                                    <p>
+                                        <b class="account">金额：5000 CNY</b>
+                                        <b class="state">已完成</b>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="success">
+                                <p class="time">2018-10-9  10:10:18</p>
+                                <div>
+                                    <p><span class="way">入金</span><span class="number">流水号：1533129320</span></p>
+                                    <p>
+                                        <b class="account">金额：5000 CNY</b>
+                                        <b class="state">已完成</b>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-box detail">
+                        <ul>
+                            <li class="profit">
+                                <p class="time">2018-10-11  10:10:18</p>
+                                <div>
+                                    <p>
+                                        <span class="way">SELL</span>
+                                        <span class="lots">手数：0.01手</span>
+                                        <span class="sum">获利：0.15</span>
+                                    </p>
+                                    <p>
+                                        <span>开/平仓价格：0.00/0.00</span>
+                                        <span>订单号：1325897</span>
+                                    </p>
+                                    <p>
+                                        <span>止损价：1293.20</span>
+                                        <span>佣金：0.00</span>
+                                    </p>
+                                    <p>
+                                        <span>获利价：1294.40</span>
+                                        <span>过夜利息：0.00</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="">
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p>
+                                        <span class="way">BUY</span>
+                                        <span class="lots">手数：0.01手</span>
+                                        <span class="sum">亏损：0.15</span>
+                                    </p>
+                                    <p>
+                                        <span>开/平仓价格：0.00/0.00</span>
+                                        <span>订单号：1325897</span>
+                                    </p>
+                                    <p>
+                                        <span>止损价：1293.20</span>
+                                        <span>佣金：0.00</span>
+                                    </p>
+                                    <p>
+                                        <span>获利价：1294.40</span>
+                                        <span>过夜利息：0.00</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="">
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p>
+                                        <span class="way">SELL</span>
+                                        <span class="lots">手数：0.01手</span>
+                                        <span class="sum">亏损：0.15</span>
+                                    </p>
+                                    <p>
+                                        <span>开/平仓价格：0.00/0.00</span>
+                                        <span>订单号：1325897</span>
+                                    </p>
+                                    <p>
+                                        <span>止损价：1293.20</span>
+                                        <span>佣金：0.00</span>
+                                    </p>
+                                    <p>
+                                        <span>获利价：1294.40</span>
+                                        <span>过夜利息：0.00</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="profit">
+                                <p class="time">2018-10-10  10:10:18</p>
+                                <div>
+                                    <p>
+                                        <span class="way">BUY</span>
+                                        <span class="lots">手数：0.01手</span>
+                                        <span class="sum">获利：0.15</span>
+                                    </p>
+                                    <p>
+                                        <span>开/平仓价格：0.00/0.00</span>
+                                        <span>订单号：1325897</span>
+                                    </p>
+                                    <p>
+                                        <span>止损价：1293.20</span>
+                                        <span>佣金：0.00</span>
+                                    </p>
+                                    <p>
+                                        <span>获利价：1294.40</span>
+                                        <span>过夜利息：0.00</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="profit">
+                                <p class="time">2018-10-09  10:10:18</p>
+                                <div>
+                                    <p>
+                                        <span class="way">SELL</span>
+                                        <span class="lots">手数：0.01手</span>
+                                        <span class="sum">获利：0.15</span>
+                                    </p>
+                                    <p>
+                                        <span>开/平仓价格：0.00/0.00</span>
+                                        <span>订单号：1325897</span>
+                                    </p>
+                                    <p>
+                                        <span>止损价：1293.20</span>
+                                        <span>佣金：0.00</span>
+                                    </p>
+                                    <p>
+                                        <span>获利价：1294.40</span>
+                                        <span>过夜利息：0.00</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="page"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+        $("#header").load("./common/header.html")
+        $("#footer").load("./common/footer.html")
+        $("select#order").click(function () {
+            $(".nav-content .list-box").eq($(this).val()).addClass("active").siblings().removeClass("active");
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="telephone=no" name="format-detection" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script><script src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        function size() {
+            var width = $(window).width();
+            if (width > 750) {
+                $('html').css('font-size', function () {
+                    return 100;
+                });
+                return;
+            } else {
+                $('html').css('font-size', function () {
+                    return 100 * width / 750;
+                });
+            }
+        }
+        size();
+        $(window).resize(function () {
+            size();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <div class="box basic">
+            <div class="top-box">
+                <b>基本资料</b>
+                <i>
+                    <span>我们承诺对阁下的个人信息严格保密</span>
+                </i>
+            </div>
+            <div class="content-box">
+                <div class="item name">
+                    <span class="span-title">真实姓名：</span>
+                    <span class="span-content">王小明</span>
+                </div>
+                <div class="item idNum">
+                    <span class="span-title">身份证号：</span>
+                    <span class="span-content">44010199306148015</span>
+                </div>
+                <div class="item addr">
+                    <span class="span-title">联系地址：</span>
+                    <span class="span-content">广东省广州市海珠区144号301房</span>
+                </div>
+                <div class="item phone">
+                    <span class="span-title">联系电话：</span>
+                    <span class="span-content">13666666666</span>
+                </div>
+                <div class="item email">
+                    <span class="span-title">邮箱地址：</span>
+                    <span class="span-content">888888888@qq.com</span>
+                </div>
+                <div class="item idcard">
+                    <span class="span-title">身份证正面：</span>
+                    <div class="img-box">
+                        <img src="/images/idcard.jpg" alt="">
+                    </div>
+                    <span class="span-title">身份证背面：</span>
+                    <div class="img-box">
+                        <img src="/images/idcard2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box brank">
+            <div class="top-box">
+                <b>银行资料</b>
+                <i><span>个人资料与银行资料必须一致，否则影响您的正常取款，需修改资料请联系客服</span></i>
+                
+            </div>
+            <div class="content-box">
+                <div class="item name">
+                    <span class="span-title">真实姓名：</span>
+                    <span class="span-content">王小明</span>
+                </div>
+                <div class="item brankName">
+                    <span class="span-title">银行名称：</span>
+                    <span class="span-content">中国工商银行</span>
+                </div>
+                <div class="item brankNum">
+                    <span class="span-title">银行账号：</span>
+                    <span class="span-content">402123021354735</span>
+                </div>
+                <div class="item brankDet">
+                    <span class="span-title">银行支行：</span>
+                    <span class="span-content">滨江中路支行</span>
+                </div>
+                <div class="item idcard">
+                    <span class="span-title">银行卡正面：</span>
+                    <div class="img-box">
+                        <img src="/images/brank.jpg" alt="">
+                    </div>
+                    <span class="span-title">银行卡背面：</span>
+                    <div class="img-box">
+                        <img src="/images/brank2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+        $("#header").load("./common/header.html")
+        $("#footer").load("./common/footer.html")
+        $(".top-box i").click(function () {
+            $(this).toggleClass("active");
+        })
+        $(".card-item .file").click(function () {
+            $(this).siblings().eq(0).trigger("click");
+        })
+
+        
+    </script>
+</body>
+
+</html>
